@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2019 at 07:58 PM
+-- Generation Time: Dec 08, 2019 at 12:53 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -48,7 +48,8 @@ CREATE TABLE `product` (
   `name` varchar(100) NOT NULL,
   `price` int(11) NOT NULL,
   `description` text NOT NULL,
-  `category` varchar(20) NOT NULL
+  `category` varchar(20) NOT NULL,
+  `Image` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -79,7 +80,8 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `login` int(25) NOT NULL,
   `password` int(25) NOT NULL,
-  `shopping_cart_id` int(11) NOT NULL
+  `shopping_cart_id` int(11) NOT NULL,
+  `Admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
