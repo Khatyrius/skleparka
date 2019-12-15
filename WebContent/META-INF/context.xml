@@ -10,8 +10,8 @@
 		maxWaitMillis="10000" 
 		username="root"
 		password="root" 
-		driverClassName="com.mysql.jdbc.Driver" 
-		url="jdbc:mysql://localhost:3306/skleparka" />
+		driverClassName="com.mysql.cj.jdbc.Driver" 
+		url="jdbc:mysql://localhost:3306/skleparka?serverTimezone=UTC" />
 
 	<Realm 
 		className="org.apache.catalina.realm.DataSourceRealm" 

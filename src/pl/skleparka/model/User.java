@@ -2,6 +2,11 @@ package pl.skleparka.model;
 
 public class User {
 	private long id;
+	private String name;
+	private String surname;
+	private int phoneNumber;
+	private String address;
+	private String city;
 	private String username;
 	private String email;
 	private String password;
@@ -10,6 +15,11 @@ public class User {
 	public User() { }
 	
 	public User(User user) {
+		this.name = user.name;
+		this.surname = user.surname;
+		this.phoneNumber = user.phoneNumber;
+		this.address = user.address;
+		this.city = user.city;
 		this.id = user.id;
 		this.username = user.username;
 		this.email = user.email;
@@ -28,6 +38,14 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -95,6 +113,60 @@ public class User {
 				return false;
 		} else if (!username.equals(other.username))
 			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (surname == null) {
+			if (other.surname != null)
+				return false;
+		} else if (!surname.equals(other.surname))
+			return false;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (phoneNumber != other.phoneNumber)
+			return false;
 		return true;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 }

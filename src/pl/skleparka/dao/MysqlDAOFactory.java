@@ -6,4 +6,5 @@ public class MysqlDAOFactory extends DAOFactory {
 	public UserDAO getUserDAO() {
 		return new UserDAOImpl();
 	}
+
 }

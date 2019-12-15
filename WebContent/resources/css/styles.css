@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-
+ 
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -19,8 +19,8 @@ body {
   height: 60px;
   background-color: #f5f5f5;
 }
-
-
+ 
+ 
 /* bs callouts
 -------------------------------------------------- */
 .bs-callout {
@@ -79,7 +79,7 @@ body {
 .bs-callout-info h4 {
     color: #5bc0de;
 }
-
+ 
 .centered{
     margin: 0 auto;
 }

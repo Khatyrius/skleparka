@@ -2,7 +2,7 @@ package pl.skleparka.dao;
 
 import java.util.List;
 
-import pl.skleparka.model.User;;
+import pl.skleparka.model.User;
 
 
 public interface UserDAO extends GenericDAO<User, Long> {
