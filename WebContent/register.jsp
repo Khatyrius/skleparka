@@ -35,11 +35,6 @@
 		<div class="col-sm-6 col-md-4 col-md-offset-4">
 			<form class="form-signin" method="post" action="register">
 				<h2 class="form-signin-heading">Zarejestruj się</h2>
-				<input name="inputName" type="text" class="form-control" placeholder="Imie" required autofocus />
-				<input name="inputSurame" type="text" class="form-control" placeholder="Nazwisko" required autofocus />
-				<input name="inputPhone" type="number" class="form-control" placeholder="Numer telefonu" required autofocus />
-				<input name="inputAddress" type="text" class="form-control" placeholder="Adres" required autofocus />
-				<input name="inputCity" type="text" class="form-	control" placeholder="Miasto" required autofocus />
 				<input name="inputEmail" type="email" class="form-control" placeholder="Email" required autofocus />
 				<input name="inputUsername" type="text" name="inputUsername" class="form-control" placeholder="Nazwa użytkownika" required autofocus />
 				<input name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />

@@ -18,7 +18,7 @@ import pl.skleparka.util.ConnectionProvider;
 public class UserDAOImpl implements UserDAO {
 	
 	private static final String CREATE_USER = 
-	  "INSERT INTO user(name, surname, phone_number, address, city, username, email, password, is_active) VALUES(:name, :surname, :phoneNumber, :address, :city, :username, :email, :password, :active);";
+	  "INSERT INTO user(username, email, password, is_active) VALUES(:username, :email, :password, :active);";
 	private static final String READ_USER = 
 	  "SELECT user_id, username, email, password, is_active FROM user WHERE user_id = :id";
 	private static final String READ_USER_BY_USERNAME = 
@@ -89,11 +89,6 @@ public class UserDAOImpl implements UserDAO {
 			user.setUsername(resultSet.getString("username"));
 			user.setEmail(resultSet.getString("email"));
 			user.setPassword(resultSet.getString("password"));
-			user.setName(resultSet.getString("name"));
-			user.setSurname(resultSet.getString("surname"));
-			user.setPhoneNumber(resultSet.getInt("phone_number"));
-			user.setAddress(resultSet.getString("address"));
-			user.setCity(resultSet.getString("city"));
 			return user;
 		}
 		
