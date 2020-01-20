@@ -58,13 +58,16 @@
   		<input type="hidden" name="productId" value="${temp.getProductId()}"/>
     	<input type=submit class="btn btn-warning" value="Zobacz oceny">
     	</form></td>
-      
+		<c:if test="${temp.getQuantity() gt 0 }">
       <td><form action="cart" method=POST>
       <input type="hidden" name="action" value="addToCart"/>
       <input type="hidden" name="productId" value="${temp.getProductId()}"/>
-      <input type="submit" class="btn btn-sm btn-warning btn-block" value="Dodaj do koszyka">   
+      <input type="submit" class="btn btn-sm btn-warning btn-block" value="Dodaj do koszyka"> 
       </form></td>  
-      
+        </c:if> 
+      <c:if test="${temp.getQuantity() eq 0 }">
+      <td><input class="btn btn-sm btn-danger btn-block" value="Dodaj do koszyka"></td>
+      </c:if> 
       <td><input type="submit" class="btn btn-sm btn-success btn-block" value="Kup teraz"></td>
       <% } %>
     </tr>
