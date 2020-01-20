@@ -22,4 +22,4 @@ servlet-api.jar.
 
 Yeah, I know I could have used maven or gradle for this but we have to make this project with basic of the basics(no maven/spring etc).
 
-In a later update I will add test with JUnit.
+In a later update I will add tests with JUnit.
