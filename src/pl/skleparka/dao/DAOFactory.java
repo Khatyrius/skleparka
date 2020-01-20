@@ -7,7 +7,15 @@ public abstract class DAOFactory {
 	public static final int MYSQL_DAO_FACTORY = 1;
 
 	public abstract UserDAO getUserDAO();
-
+	public abstract BillingInfoDAO getBillingInfoDAO();
+	public abstract ProductDAO getProductDAO();
+	public abstract CartDAO getCartDAO();
+	public abstract ReviewDAO getReviewDAO();
+	public abstract HistoryDAO getHistoryDAO();
+	public abstract OrdersDAO getOrdersDAO();
+	public abstract ShipmentDAO getShipmentDAO();
+	public abstract PaymentDAO getPaymentDAO();
+	
 	public static DAOFactory getDAOFactory() {
 		DAOFactory factory = null;
 		try {

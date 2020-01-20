@@ -1,13 +1,11 @@
 package pl.skleparka.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import pl.skleparka.service.UserService;
 
 @WebServlet("/register")
@@ -25,11 +23,21 @@ public class RegisterController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("inputUsername");
-		String password = request.getParameter("inputPassword");
 		String email = request.getParameter("inputEmail");
-		UserService userService = new UserService();
-		userService.addUser(username, email, password);
-		response.sendRedirect(request.getContextPath() + "/");
+		String password = request.getParameter("inputPassword");
+		String passwordConf = request.getParameter("inputPasswordConfirmation");
+		String firstName = request.getParameter("inputFirstName");
+		String middleName = request.getParameter("inputMiddleName");
+		String lastName = request.getParameter("inputLastName");
+		UserService us = new UserService();
+		
+		if(password.equals(passwordConf)) {
+			us.addUser(username, email, password, firstName, middleName, lastName);
+			response.sendRedirect("index.jsp?success=1");
+		} else {
+			request.setAttribute("errorMessage", "Has³a siê ró¿ni¹!");
+			request.getRequestDispatcher("/register.jsp").forward(request, response);
+		}
 	}
 
 }

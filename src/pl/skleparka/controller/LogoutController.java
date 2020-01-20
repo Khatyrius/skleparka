@@ -13,6 +13,7 @@ public class LogoutController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Wylogowa³ siê u¿ytkownik: " + request.getSession().getAttribute("users").toString());
 		request.getSession().invalidate();
 		response.sendRedirect(request.getContextPath() + "/");
 	}

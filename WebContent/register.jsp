@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,42 +13,54 @@
 
   <body>
     
-    <nav class = "navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <a href="index.jsp" class="navbar-brand">Skleparka</a>
-        
-        
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-          <span class="glyphicon glyphicon-list"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse navHeaderCollapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Główna</a></li>	
-            <li><a href="login">Zaloguj się</a></li>
-          </ul>
-        </div>
-        
-      </div>
-    </nav>
+    <jsp:include page="headerChanger.jsp"/>
     
-    <div class="container">
-		<div class="col-sm-6 col-md-4 col-md-offset-4">
-			<form class="form-signin" method="post" action="register">
-				<h2 class="form-signin-heading">Zarejestruj się</h2>
-				<input name="inputEmail" type="email" class="form-control" placeholder="Email" required autofocus />
-				<input name="inputUsername" type="text" name="inputUsername" class="form-control" placeholder="Nazwa użytkownika" required autofocus />
-				<input name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
-				<button class="btn btn-lg btn-primary btn-block" type="submit" >Zarejestruj</button>
-			</form>
-		</div>
-    </div>
+   	<c:if test="${errorMessage != null}">
+    <div class="alert alert-danger" role="alert">
+  	<c:out value="${errorMessage}"/>
+  	</div>
+  	</c:if>
+  	
+    <div class="row" id="center">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+		<form role="form" action="register" method="post">
+			<fieldset>
+				<h2>Podaj swoje dane</h2>
+				<hr class="colorgraph">
+				<div class="form-group">
+                    <input name="inputEmail" type="email" class="form-control" placeholder="Email" required autofocus />
+				</div>
+				<div class="form-group">
+                    <input name="inputUsername" type="text" name="inputUsername" class="form-control" placeholder="Nazwa użytkownika" required autofocus />
+				</div>
+				<div class="form-group">
+                    <input name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
+				</div>
+				<div class="form-group">
+                    <input name="inputPasswordConfirmation" type="password" class="form-control" placeholder="Potwierdź hasło" required />
+				</div>
+				<div class="form-group">
+                    <input name="inputFirstName" type="text" name="inputFirstName" class="form-control" placeholder="Imię" required autofocus />
+				</div>
+				<div class="form-group">
+                    <input name="inputMiddleName" type="text" name="inputMiddleName" class="form-control" placeholder="Drugie Imię" autofocus />
+				</div>
+				<div class="form-group">
+                    <input name="inputLastName" type="text" name="inputLastName" class="form-control" placeholder="Nazwisko" required autofocus />			
+				</div>
+				<hr class="colorgraph">
+				<div class="row">
+					<div class="center">
+                        <input type="submit" class="btn btn-xl btn-primary btn-block" value="Stwórz konto">
+					</div>
+					
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
     
-    <footer class="footer">
-      <div class="container">
-                <p class="navbar-text">Skleparka - developed by noobs</p>
-      </div>
-    </footer>
+   <jsp:include page="footer.jsp"/>
     
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

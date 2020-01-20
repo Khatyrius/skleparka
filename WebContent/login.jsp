@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,45 +13,28 @@
 
   <body>
     
-    <nav class = "navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <a href="index.jsp" class="navbar-brand">Skleparka</a>
-        
-        
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-          <span class="glyphicon glyphicon-list"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse navHeaderCollapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Główna</a></li>
-            <li><a href="login">Zaloguj się</a></li>
-          </ul>
-        </div>
-        
-      </div>
-    </nav>
-    
+   <jsp:include page="headerChanger.jsp"/>
+   	
+	<c:if test="${errorMessage != null}">
+    <div class="alert alert-danger" role="alert">
+  	<c:out value="${errorMessage}"/>
+	</div>
+	</c:if>
+	
     <div class="container">
 		<div class="col-sm-6 col-md-4 col-md-offset-4">
-			<form class="form-signin" action="j_security_check" method="post">
+			<form class="form-signin" action="login" method="post">
 				<h2 class="form-signin-heading">Zaloguj się</h2>
-				<input name="j_username" type="text" class="form-control" placeholder="Nazwa uzytkownika" required autofocus>
-				<input name="j_password" type="password" class="form-control" placeholder="Hasło" required>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
+				<input name="inputUsername" type="text" name="inputUsername" class="form-control" placeholder="Nazwa użytkownika" required autofocus />
+				<input name="inputPassword" type="password" class="form-control" placeholder="Hasło" required />
+				<button class="btn btn-lg btn-primary btn-block" type="submit" value="Sign In">Zaloguj</button>
 				<a href="register">Zarejestruj</a>
 			</form>
 		</div>
     </div>
+        
+    <jsp:include page="footer.jsp"/>
     
-    <footer class="footer">
-      <div class="container">
-                <p class="navbar-text">Skleparka - developed by noobs</p>
-      </div>
-    </footer>
-    
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="resources/js/bootstrap.js"></script>
+    <script src="resources/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
