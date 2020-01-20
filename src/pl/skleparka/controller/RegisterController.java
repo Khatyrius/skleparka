@@ -29,10 +29,10 @@ public class RegisterController extends HttpServlet {
 		String firstName = request.getParameter("inputFirstName");
 		String middleName = request.getParameter("inputMiddleName");
 		String lastName = request.getParameter("inputLastName");
-		UserService us = new UserService();
+		UserService userService = UserService.getInstance();
 		
 		if(password.equals(passwordConf)) {
-			us.addUser(username, email, password, firstName, middleName, lastName);
+			userService.addUser(username, email, password, firstName, middleName, lastName);
 			response.sendRedirect("index.jsp?success=1");
 		} else {
 			request.setAttribute("errorMessage", "Has³a siê ró¿ni¹!");

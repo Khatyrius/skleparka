@@ -7,6 +7,17 @@ import pl.skleparka.dao.DAOFactory;
 import pl.skleparka.dao.UserDAO;
 
 public class UserService {
+	private static UserService instance;
+    
+    private UserService(){}
+    
+    public static UserService getInstance(){
+        if(instance == null){
+            instance = new UserService();
+        }
+        return instance;
+    }
+    
 	public void addUser(String username, String email, String password, String firstName, String middleName, String lastName) {
 		User user = new User();
 		user.setUsername(username);

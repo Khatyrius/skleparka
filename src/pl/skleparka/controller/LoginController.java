@@ -30,14 +30,14 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 		String username = request.getParameter("inputUsername");
 		String password = request.getParameter("inputPassword");
-		UserService us = new UserService();
-		BillingInfoService billingInfoServie = new BillingInfoService();
+		UserService userService = UserService.getInstance();
+		BillingInfoService billingInfoServie = BillingInfoService.getInstance();
 		boolean result = Authenticator.authenticate(username, password);
-		boolean isActive = us.getUserByUsername(username).isActive();
+		boolean isActive = userService.getUserByUsername(username).isActive();
 		HttpSession session = request.getSession();		
 		
 		if (result && isActive) {
-			User user = us.getUserByUsername(username);
+			User user = userService.getUserByUsername(username);
 			BillingInfo userBillingInfo = billingInfoServie.getBillingInfoByUserId(user.getId());		
 			System.out.println("Zalogowa³ siê u¿ytkownik: " + user);
 			session.setAttribute("users", user);
@@ -49,7 +49,7 @@ public class LoginController extends HttpServlet {
 			session.invalidate();
 			request.setAttribute("errorMessage", "Wprowadzono b³êdne dane logowania!");
 			request.getRequestDispatcher("/login.jsp").forward(request, response); 
-		} else if(us.getUserByUsername(username) != null && isActive == false){
+		} else if(userService.getUserByUsername(username) != null && isActive == false){
 			session.invalidate();
 			request.setAttribute("errorMessage", "Taki u¿ytkownik nie istnieje lub jest zablokowany!");
 			request.getRequestDispatcher("/login.jsp").forward(request, response); 

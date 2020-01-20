@@ -7,6 +7,16 @@ import pl.skleparka.dao.DAOFactory;
 import pl.skleparka.dao.PaymentDAO;
 
 public class PaymentService {
+	private static PaymentService instance;
+    
+    private PaymentService(){}
+    
+    public static PaymentService getInstance(){
+        if(instance == null){
+            instance = new PaymentService();
+        }
+        return instance;
+    }
 	
 	public void addPayment(String paymentType, int userId, double amount, int sellerId, int billingId, int orderId, int shipmentId) {
 		Payment payment = new Payment();

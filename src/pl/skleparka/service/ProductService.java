@@ -7,6 +7,17 @@ import pl.skleparka.dao.DAOFactory;
 import pl.skleparka.dao.ProductDAO;
 
 public class ProductService {
+	private static ProductService instance;
+    
+    private ProductService(){}
+    
+    public static ProductService getInstance(){
+        if(instance == null){
+            instance = new ProductService();
+        }
+        return instance;
+    }
+    
 	public void addProduct(String itemName, int quantity, String type, double price, String description, String imageUrl, int sellerId) {
 		Product product = new Product();
 		product.setItemName(itemName);

@@ -9,6 +9,17 @@ import pl.skleparka.dao.DAOFactory;
 import pl.skleparka.dao.OrdersDAO;
 
 public class OrderService {
+	private static OrderService instance;
+    
+    private OrderService(){}
+    
+    public static OrderService getInstance(){
+        if(instance == null){
+            instance = new OrderService();
+        }
+        return instance;
+    }
+    
 	public void addNewOrder(int userId, String status, double total) {        
 		Order order = new Order();
 

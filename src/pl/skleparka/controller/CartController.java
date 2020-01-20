@@ -24,8 +24,8 @@ import pl.skleparka.service.ProductService;
 @WebServlet("/cart")
 public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   	CartService cartService = new CartService();
-   	ProductService productService = new ProductService();
+   	CartService cartService = CartService.getInstance();
+   	ProductService productService = ProductService.getInstance();
     /**
      * @see HttpServlet#HttpServlet()
      */

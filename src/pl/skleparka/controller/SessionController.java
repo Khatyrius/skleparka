@@ -26,8 +26,8 @@ public class SessionController implements HttpSessionListener  {
 		  User user = (User)session.getAttribute("users");
 		  if(user != null) {
 	      System.out.println("Session of user " + user.getUsername() + " has ended. User has been logged out");
-	      CartService cartService = new CartService();
-	      ProductService productService = new ProductService();
+	      CartService cartService = CartService.getInstance();
+	      ProductService productService = ProductService.getInstance();
 	      
 			@SuppressWarnings("unchecked")
 			List<Product> products = ((List<Product>)session.getAttribute("cart"));

@@ -7,6 +7,16 @@ import pl.skleparka.dao.CartDAO;
 import pl.skleparka.dao.DAOFactory;
 
 public class CartService {
+	private static CartService instance;
+    
+    private CartService(){}
+    
+    public static CartService getInstance(){
+        if(instance == null){
+            instance = new CartService();
+        }
+        return instance;
+    }
 
 	public List<Product> getProductFromCartOfUser(int userId){
 		return GetDao().getCartProducts(userId);

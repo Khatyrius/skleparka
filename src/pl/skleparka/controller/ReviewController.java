@@ -37,9 +37,9 @@ public class ReviewController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session = request.getSession();
     	List<Review> reviews = new ArrayList<Review>();
-    	ReviewService reviewService = new ReviewService();
-    	ProductService productService = new ProductService();
-    	UserService userService = new UserService();
+    	ReviewService reviewService = ReviewService.getInstance();
+    	ProductService productService = ProductService.getInstance();
+    	UserService userService = UserService.getInstance();
     	
     	int productId = Integer.valueOf(request.getParameter("productId"));
     	Product product = productService.getProduct(productId);

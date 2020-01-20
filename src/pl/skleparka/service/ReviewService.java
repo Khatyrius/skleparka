@@ -7,6 +7,17 @@ import pl.skleparka.dao.DAOFactory;
 import pl.skleparka.dao.ReviewDAO;
 
 public class ReviewService {
+	private static ReviewService instance;
+    
+    private ReviewService(){}
+    
+    public static ReviewService getInstance(){
+        if(instance == null){
+            instance = new ReviewService();
+        }
+        return instance;
+    }
+    
 	public void addReview(int userId,int productId, String description, int rating) {
 		Review review = new Review();
 		review.setUserId(userId);

@@ -8,6 +8,19 @@ import pl.skleparka.dao.BillingInfoDAO;
 import pl.skleparka.dao.DAOFactory;
 
 public class BillingInfoService {
+	private static BillingInfoService instance;
+    
+    private BillingInfoService(){}
+    
+    public static BillingInfoService getInstance(){
+        if(instance == null){
+            instance = new BillingInfoService();
+        }
+        return instance;
+    }
+	
+	
+	
 	public void addBillingInfo(int userId, String cardNumber, Date expirationDate, int securityCode, String billingAddress) {
 		BillingInfo billingInfo = new BillingInfo();
 		billingInfo.setUserId(userId);

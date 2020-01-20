@@ -33,7 +33,7 @@ public class ShopContoller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ProductService productService = new ProductService();
+		ProductService productService = ProductService.getInstance();
 		List<Product> products = productService.getAllProducts();
 		HttpSession session = request.getSession();
 		session.setAttribute("products", products);

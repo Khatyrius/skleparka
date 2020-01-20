@@ -70,7 +70,7 @@ public class ControlPanelController extends HttpServlet {
 	}
 
 	private void controlUsers(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserService userService = new UserService();
+		UserService userService = UserService.getInstance();
 		List<User> users = userService.getUserList();
 		HttpSession session = request.getSession();
 		session.setAttribute("userList", users);
@@ -80,7 +80,7 @@ public class ControlPanelController extends HttpServlet {
 	}
 
 	private void controlProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductService productService = new ProductService();
+		ProductService productService = ProductService.getInstance();
 		List<Product> products = productService.getAllProducts();
 		
 		HttpSession session = request.getSession();
@@ -90,7 +90,7 @@ public class ControlPanelController extends HttpServlet {
 	}
 
 	private void controlOrders(HttpServletRequest request, HttpServletResponse response) {
-		OrderService orderService = new OrderService();
+		OrderService orderService = OrderService.getInstance();
 		List<Order> orders = orderService.getAllOrders();
 		HttpSession session = request.getSession();
 		session.setAttribute("orderList", orders);
@@ -99,7 +99,7 @@ public class ControlPanelController extends HttpServlet {
 	}
 
 	private void controlShipments(HttpServletRequest request, HttpServletResponse response) {
-		ShipmentService shipmentService = new ShipmentService();
+		ShipmentService shipmentService = ShipmentService.getInstance();
 		List<Shipment> shipmnets = shipmentService.getAllShipments();
 		HttpSession session = request.getSession();
 		session.setAttribute("shipmentsList", shipmnets);
@@ -108,7 +108,7 @@ public class ControlPanelController extends HttpServlet {
 	}
 
 	private void controlPayments(HttpServletRequest request, HttpServletResponse response) {
-		PaymentService paymentService = new PaymentService();
+		PaymentService paymentService = PaymentService.getInstance();
 		List<Payment> payments = paymentService.getAllPayments();
 		HttpSession session = request.getSession();
 		session.setAttribute("paymentsList", payments);

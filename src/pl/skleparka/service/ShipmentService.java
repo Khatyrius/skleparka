@@ -8,6 +8,17 @@ import pl.skleparka.dao.ShipmentDAO;
 
 
 public class ShipmentService {
+	private static ShipmentService instance;
+    
+    private ShipmentService(){}
+    
+    public static ShipmentService getInstance(){
+        if(instance == null){
+            instance = new ShipmentService();
+        }
+        return instance;
+    }
+    
 	public void addShipment(int orderId, int userId, String trackingNumber, String returnAddress, String carrier, float charge, String status) {
 		Shipment shipment = new Shipment();
 		status = status.toUpperCase();

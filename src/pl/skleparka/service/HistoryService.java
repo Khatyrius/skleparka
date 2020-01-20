@@ -7,6 +7,16 @@ import pl.skleparka.dao.DAOFactory;
 import pl.skleparka.dao.HistoryDAO;
 
 public class HistoryService {
+	private static HistoryService instance;
+    
+    private HistoryService(){}
+    
+    public static HistoryService getInstance(){
+        if(instance == null){
+            instance = new HistoryService();
+        }
+        return instance;
+    }
 	
 	public void addToHistory(int userId, int orderId) {
 		History history = new History();
