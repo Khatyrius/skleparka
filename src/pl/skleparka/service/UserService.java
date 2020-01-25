@@ -74,8 +74,36 @@ public class UserService {
 		return GetDao().getAll();
 	}
 	
+	public void blockUser(int userId) {
+		GetDao().blockUser(userId);
+	}
+	
+	public void unblockUser(int userId) {
+		GetDao().unblockUser(userId);
+	}
+	
 	public String getUsernameFromId(int userId) {
 		return GetDao().read(userId).getUsername();
+	}
+	
+	public List<User> getUsersByFirstName(String firstName){
+		return GetDao().getUsersByFirstName(firstName);
+	}
+	
+	public List<User> getUsersByLastName(String lastName){
+		return GetDao().getUsersByLastName(lastName);
+	}
+
+	public List<User> getUsersByEmail(String email){
+		return GetDao().getUsersByEmail(email);
+	}
+
+	public List<User> getUsersByUsername(String username){
+		return GetDao().getUsersByUsername(username);
+	}
+
+	public List<User> getUsersByActiveStatus(boolean isActive){
+		return GetDao().getUsersByActiveStatus(isActive);
 	}
 	
 	private UserDAO GetDao() {

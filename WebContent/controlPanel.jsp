@@ -52,19 +52,22 @@
 	<div class="container">
 	<br>
 	<c:choose>
-  	<c:when test="${command == 'controlUsers'}"> 
-  	
-  	<form action="controlPanel" method="GET">
-  			<input type="hidden" name="filter" value="findUser" />
-  			<input type="text" name="serachPhrase" placeholder="Wpisz szukane">
-  			<input type="radio" name="option" value="id" checked> Id
-  			<input type="radio" name="option" value="username"> Nazwa użytkownika
-  			<input type="radio" name="option" value="email"> Email
-  			<input type="radio" name="option" value="firstName"> Imie
-  			<input type="radio" name="option" value="lastName"> Nazwisko
-  			<input type="radio" name="option" value="active"> Aktywny
-      		<input type="submit" class="btn btn-sm btn-error btn-block" value="Znajdz">
-     </form>
+  	<c:when test="${command == 'controlUsers' || command == 'filterUsers'}"> 
+  	     
+    <form action="controlPanel" id="filterUsers" method="GET">
+  	<input type="text" name="search" placeholder="Wpisz szukane">
+  	<input type="hidden" name="command" value="filterUsers" />
+  	<input type="submit">
+	</form>
+
+	<select name="parameter" form="filterUsers">
+  	<option value="id">Id</option>
+ 	 <option value="username">Nazwa uzytkownika</option>
+ 	 <option value="email">Email</option>
+ 	 <option value="fristName">Imię</option>
+ 	 <option value="lastName">Nazwisko</option>
+ 	 <option value="active">Aktywny</option>
+	</select>
      
 	<table id="tablePreview" class="table table-hover table-bordered">
   	<thead>
@@ -90,10 +93,18 @@
       <td><c:out value="${temp.isActive()}"/></td>
       	<c:choose>
   		<c:when test="${temp.isActive() == true}"> 
-  			<td><input type="submit" class="btn btn-sm btn-danger btn-block" value="Blokuj Użytkownika"></td>
+  		<td><form action="controlPanel" method=POST>
+      <input type="hidden" name="action" value="blockUser"/>
+      <input type="hidden" name="userId" value="${temp.getId()}"/>
+      <input type="submit" class="btn btn-sm btn-danger btn-block" value="Blokuj użytkownika"> 
+      </form></td>  
   		</c:when>
 		<c:when test="${temp.isActive() == false}"> 
-  			<td><input type="submit" class="btn btn-sm btn-success btn-block" value="Aktywuj Użytkownika"></td>
+  			<td><form action="controlPanel" method=POST>
+      <input type="hidden" name="action" value="activateUser"/>
+      <input type="hidden" name="userId" value="${temp.getId()}"/>
+      <input type="submit" class="btn btn-sm btn-success btn-block" value="Aktywuj użytkownika"> 
+      </form></td> 
   		</c:when>
 		</c:choose>
     </tr>
@@ -102,7 +113,19 @@
 	</table>
 	</c:when>
 	
-  	<c:when test="${command == 'controlProducts'}">
+  	<c:when test="${command == 'controlProducts' || command == 'filterProducts'}">
+  	 <form action="controlPanel" id="filterProducts" method="GET">
+  	<input type="text" name="search" placeholder="Wpisz szukane">
+  	<input type="hidden" name="command" value="filterProducts" />
+  	<input type="submit">
+  	
+  	<select name="parameter" form="filterProducts">
+  	<option value="id">Id</option>
+ 	 <option value="name">Nazwa produktu</option>
+ 	 <option value="type">Typ produktu</option>
+	</select>
+  	
+	</form>
 	<table id="tablePreview" class="table table-hover table-bordered">
   	<thead>
     <tr>
@@ -120,12 +143,16 @@
     <tr>
       <th scope="row"><c:out value="${temp.getProductId()}"/></th>
       <td><img src="<c:out value="${temp.getImageUrl()}"/>" alt="Nie można załadować zdjęcia" height="100" width="100"></td>
-      <td><c:out value="${temp.getItemName()}"/></td>
+      <td><c:out value="${temp.getProductName()}"/></td>
       <td><c:out value="${temp.getQuantity()}"/></td>
       <td><c:out value="${temp.getType()}"/></td>
       <td><c:out value="${temp.getPrice()}zł"/></td>
       <td><c:out value="${temp.getDescription()}"/></td>
-      <td><input type="submit" class="btn btn-sm btn-warning btn-block" value="Uaktualnij dane"></td>
+        <td><form action="updateProduct" method="GET">
+  		<input type="hidden" name="productId" value="${temp.getProductId()}" />
+   	 	<input type=submit class="btn btn-sm btn-warning btn-block" value="Uaktualnij dane">
+    	</form></td>
+      
     </tr>
    	</c:forEach>
    	<tr>
@@ -136,7 +163,9 @@
    		<td></td>
    		<td></td>
    		<td></td>
-   		<td><input type="submit" class="btn btn-sm btn-success btn-block" value="Dodaj nowy produkt"></td>
+   		<td><form action="addProduct" method="GET">
+   	 	<input type=submit class="btn btn-sm btn-success btn-block" value="Dodaj nowy produkt">
+    	</form></td>
    	</tr>
   	</tbody>
 	</table>

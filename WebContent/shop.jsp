@@ -18,7 +18,16 @@
 	
    <div class="container">
   	<div class="row">
-  	<!--Table-->
+  	<form action="shop" id="filterProducts" method="GET">
+  	<input type="text" name="search" placeholder="Wpisz szukane">
+  	<input type="hidden" name="command" value="filterProducts" />
+  	<input type="submit">
+  	</form>	
+  	
+  	<select name="parameter" form="filterProducts">
+ 	 <option value="name">Nazwa produktu</option>
+ 	 <option value="type">Typ produktu</option>
+	</select>
 <table id="tablePreview" class="table table-hover table-bordered">
 <!--Table head-->
   <thead>
@@ -36,11 +45,11 @@
   <!--Table body-->
   <tbody>
   <% int count = 1; %>
-  <c:forEach var="temp" items="${products}" > 
+  <c:forEach var="temp" items="${productsList}" > 
     <tr>
       <th scope="row"><%= count %></th>
       <td><img src="<c:out value="${temp.getImageUrl()}"/>" alt="Nie można załadować zdjęcia" height="250" width="250"></td>
-      <td><c:out value="${temp.getItemName()}"/></td>
+      <td><c:out value="${temp.getProductName()}"/></td>
       <td><c:out value="${temp.getQuantity()}"/></td>
       <td><c:out value="${temp.getType()}"/></td>
       <td><c:out value="${temp.getPrice()}zł"/></td>

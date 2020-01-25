@@ -243,4 +243,182 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
+	@Override
+	public List<User> getUsersByFirstName(String firstName) {
+		ArrayList<User> users = new ArrayList<User>();
+		Connection con;
+		ResultSet rs;
+		Statement st = null;
+		try {
+			con = DBConnector.getConnection();
+			String query = "SELECT * from users WHERE user_lastname LIKE  \'%" + firstName + "%\';";
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+			while(rs.next()) {
+				if(!rs.getString("account_type").equals("admin")) {
+				User user = new User();
+				user.setId(rs.getInt("user_id"));
+				user.setUsername(rs.getString("username"));
+				user.setEmail(rs.getString("user_email"));
+				user.setPassword(rs.getString("user_password"));
+				user.setFirstName(rs.getString("user_firstname"));
+				user.setMiddleName(rs.getString("user_middlename"));
+				user.setLastName(rs.getString("user_lastname"));
+				user.setType(rs.getString("account_type"));
+				user.setActive(rs.getBoolean("isActive"));
+				users.add(user);
+				}
+			}
+			DBConnector.close(con, rs, st);
+		} catch (Exception e) {
+			System.out.println("Couldn't make a list with all users with first name like " + firstName);
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	@Override
+	public List<User> getUsersByLastName(String lastName) {
+		ArrayList<User> users = new ArrayList<User>();
+		Connection con;
+		ResultSet rs;
+		Statement st = null;
+		try {
+			con = DBConnector.getConnection();
+			String query = "SELECT * from users WHERE user_lastname LIKE  \'%" + lastName + "%\';";
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+			while(rs.next()) {
+				if(!rs.getString("account_type").equals("admin")) {
+				User user = new User();
+				user.setId(rs.getInt("user_id"));
+				user.setUsername(rs.getString("username"));
+				user.setEmail(rs.getString("user_email"));
+				user.setPassword(rs.getString("user_password"));
+				user.setFirstName(rs.getString("user_firstname"));
+				user.setMiddleName(rs.getString("user_middlename"));
+				user.setLastName(rs.getString("user_lastname"));
+				user.setType(rs.getString("account_type"));
+				user.setActive(rs.getBoolean("isActive"));
+				users.add(user);
+				}
+			}
+			DBConnector.close(con, rs, st);
+		} catch (Exception e) {
+			System.out.println("Couldn't make a list with all users with last name like " + lastName);
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	@Override
+	public List<User> getUsersByEmail(String email) {
+		ArrayList<User> users = new ArrayList<User>();
+		Connection con;
+		ResultSet rs;
+		Statement st = null;
+		try {
+			con = DBConnector.getConnection();
+			String query = "SELECT * from users WHERE user_email LIKE  \'%" + email + "%\';";
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+			while(rs.next()) {
+				if(!rs.getString("account_type").equals("admin")) {
+				User user = new User();
+				user.setId(rs.getInt("user_id"));
+				user.setUsername(rs.getString("username"));
+				user.setEmail(rs.getString("user_email"));
+				user.setPassword(rs.getString("user_password"));
+				user.setFirstName(rs.getString("user_firstname"));
+				user.setMiddleName(rs.getString("user_middlename"));
+				user.setLastName(rs.getString("user_lastname"));
+				user.setType(rs.getString("account_type"));
+				user.setActive(rs.getBoolean("isActive"));
+				users.add(user);
+				}
+			}
+			DBConnector.close(con, rs, st);
+		} catch (Exception e) {
+			System.out.println("Couldn't make a list with all users with email lilke " + email);
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	@Override
+	public List<User> getUsersByUsername(String username) {
+		ArrayList<User> users = new ArrayList<User>();
+		Connection con;
+		ResultSet rs;
+		Statement st = null;
+		try {
+			con = DBConnector.getConnection();
+			String query = "SELECT * from users WHERE username LIKE  \'%" + username + "%\';";
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+			while(rs.next()) {
+				if(!rs.getString("account_type").equals("admin")) {
+				User user = new User();
+				user.setId(rs.getInt("user_id"));
+				user.setUsername(rs.getString("username"));
+				user.setEmail(rs.getString("user_email"));
+				user.setPassword(rs.getString("user_password"));
+				user.setFirstName(rs.getString("user_firstname"));
+				user.setMiddleName(rs.getString("user_middlename"));
+				user.setLastName(rs.getString("user_lastname"));
+				user.setType(rs.getString("account_type"));
+				user.setActive(rs.getBoolean("isActive"));
+				users.add(user);
+				}
+			}
+			DBConnector.close(con, rs, st);
+		} catch (Exception e) {
+			System.out.println("Couldn't make a list with all users with username like " + username);
+			e.printStackTrace();
+		}
+		return users;
+	}
+
+	@Override
+	public List<User> getUsersByActiveStatus(boolean active) {
+		int status;
+		
+		if(active) {
+			status = 1;
+		}else {
+			status = 0;
+		}
+		
+		ArrayList<User> users = new ArrayList<User>();
+		Connection con;
+		ResultSet rs;
+		Statement st = null;
+		try {
+			con = DBConnector.getConnection();
+			String query = "SELECT * from users WHERE isActive =  " + status + ";";
+			st = con.createStatement();
+			rs = st.executeQuery(query);
+			while(rs.next()) {
+				if(!rs.getString("account_type").equals("admin")) {
+				User user = new User();
+				user.setId(rs.getInt("user_id"));
+				user.setUsername(rs.getString("username"));
+				user.setEmail(rs.getString("user_email"));
+				user.setPassword(rs.getString("user_password"));
+				user.setFirstName(rs.getString("user_firstname"));
+				user.setMiddleName(rs.getString("user_middlename"));
+				user.setLastName(rs.getString("user_lastname"));
+				user.setType(rs.getString("account_type"));
+				user.setActive(rs.getBoolean("isActive"));
+				users.add(user);
+				}
+			}
+			DBConnector.close(con, rs, st);
+		} catch (Exception e) {
+			System.out.println("Couldn't make a list with all users with status " + active);
+			e.printStackTrace();
+		}
+		return users;
+	}
+
 }

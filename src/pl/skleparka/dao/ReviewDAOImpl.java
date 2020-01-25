@@ -65,7 +65,24 @@ public class ReviewDAOImpl implements ReviewDAO{
 	}
 
 	@Override
-	public void update(Review updateObject) {
+	public void update(Review updatedReview) {
+		Connection con;
+		Statement st;
+		try {
+			con = DBConnector.getConnection();
+			String query = "UPDATE review SET description = \'" + updatedReview.getDescription() +"\'"
+							+ ", rating = "+ updatedReview.getRating()
+							+ " WHERE review_ID = "+ updatedReview.getReviewId() +";";
+			
+			st = con.createStatement();
+			st.executeUpdate(query);
+			
+			DBConnector.close(con, null, st);
+		}catch (Exception e) {
+			System.out.println("Update of review failed");
+			e.printStackTrace();
+		
+		}
 	}
 
 	@Override

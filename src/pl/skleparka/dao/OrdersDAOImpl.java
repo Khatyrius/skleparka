@@ -17,7 +17,7 @@ public class OrdersDAOImpl implements OrdersDAO{
 		Connection con;		
 		try {
 			con = DBConnector.getConnection();
-			String query = "INSERT INTO orders(user_id,order_date"
+			String query = "INSERT INTO orders(customer_id,order_date"
 						+",order_status, total)"
 						+" VALUES("
 						+ newOrder.getUserId()+", "
@@ -130,7 +130,7 @@ public class OrdersDAOImpl implements OrdersDAO{
 		Statement st = null;
 		try {
 			con = DBConnector.getConnection();
-			String query = "SELECT * from orders WHERE user_id = " + userId + ";";
+			String query = "SELECT * from orders WHERE customer_id = " + userId + ";";
 			st = con.createStatement();
 			rs = st.executeQuery(query);
 			while(rs.next()) {

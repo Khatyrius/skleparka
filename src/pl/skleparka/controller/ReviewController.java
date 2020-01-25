@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import pl.skleparka.beans.Product;
 import pl.skleparka.beans.Review;
+import pl.skleparka.beans.User;
 import pl.skleparka.service.ProductService;
 import pl.skleparka.service.ReviewService;
 import pl.skleparka.service.UserService;
@@ -45,18 +46,20 @@ public class ReviewController extends HttpServlet {
     	Product product = productService.getProduct(productId);
     	List<Product> products = new ArrayList<Product>();
     	products.add(product);
-    	
+    	List<User> users = new ArrayList<User>();
     	reviews = reviewService.getAllReviewsForProduct(productId);
     	float reviewAvg = 0.0f;
     	
+    	
     	for(Review review : reviews) {
     		review.setUsername(userService.getUsernameFromId(review.getUserId()));
+    		users.add(UserService.getInstance().getUserById(review.getUserId()));
     		reviewAvg += review.getRating();
     	} 
     	
     	reviewAvg = (float)reviewAvg / (float)reviews.stream().count();
-    	
-    	
+    	session.setAttribute("userList", users);
+    	request.setAttribute("userList", users);
     	session.setAttribute("avg", reviewAvg);
     	request.setAttribute("avg", reviewAvg);
 		session.setAttribute("review", reviews);
@@ -72,7 +75,22 @@ public class ReviewController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		HttpSession session = request.getSession();
+		String command = request.getParameter("command");
+		session.setAttribute("command", command);
+		int reviewId = Integer.valueOf(request.getParameter("reviewId"));
+		if(command == null) command = "editReview";
+		switch(command) {
+		case "removeReview" : removeReview(request, response, reviewId);
+			break;
+		default: removeReview(request, response, reviewId);
+		}
+	}
+
+	private void removeReview(HttpServletRequest request, HttpServletResponse response, int reviewId) throws IOException {
+		int productId = ReviewService.getInstance().getReview(reviewId).getProductId();
+		ReviewService.getInstance().deleteReview(reviewId);
+		response.sendRedirect(request.getContextPath() + "/review?productId=" + productId);
 	}
 
 }

@@ -53,8 +53,7 @@ public class CartController extends HttpServlet {
     	}
 		session.setAttribute("cart", distinctProducts);
    		request.setAttribute("cart", distinctProducts);
-   		
-		request.getRequestDispatcher("cart.jsp").forward(request, response);
+   		request.getRequestDispatcher("cart.jsp").forward(request, response);
 	}
 
 	/**
@@ -78,7 +77,7 @@ public class CartController extends HttpServlet {
 			HttpSession session = request.getSession();
 			int userId = ((User)session.getAttribute("users")).getId();
 			cartService.addItemToUserCart(productId, userId);
-			productService.updateProduct(productId, productService.getProduct(productId).getQuantity()-1, "", 0.0, "", "");
+			productService.updateProduct(productId,"", productService.getProduct(productId).getQuantity()-1, "", 0.0, "", "");
 			response.sendRedirect(request.getContextPath() + "/shop");
 		}
 		
@@ -97,7 +96,7 @@ public class CartController extends HttpServlet {
 			
 			
 			cartService.deleteItemFromUserCart(productId, userId);
-			productService.updateProduct(productId, productService.getProduct(productId).getQuantity() + quantity, "", 0.0, "", "");
+			productService.updateProduct(productId,"", productService.getProduct(productId).getQuantity() + quantity, "", 0.0, "", "");
 			response.sendRedirect(request.getContextPath() + "/cart");
 		}
 

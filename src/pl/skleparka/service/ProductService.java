@@ -20,7 +20,7 @@ public class ProductService {
     
 	public void addProduct(String itemName, int quantity, String type, double price, String description, String imageUrl, int sellerId) {
 		Product product = new Product();
-		product.setItemName(itemName);
+		product.setProductName(itemName);
 		product.setQuantity(quantity);
 		product.setType(type);
 		product.setPrice(price);
@@ -35,8 +35,12 @@ public class ProductService {
 		return GetDao().read(productId);
 	}
 	
-	public void updateProduct(int productId, int quantity, String type, double price, String description, String imageUrl) {
+	public void updateProduct(int productId, String productName, int quantity, String type, double price, String description, String imageUrl) {
 		Product product = getProduct(productId);
+		
+		if(productName.isEmpty() && !productName.equals(product.getProductName())) {
+			product.setProductName(productName);
+		}
 		
 		if(quantity != product.getQuantity() && quantity >=0) {
 			product.setQuantity(quantity);
@@ -81,12 +85,12 @@ public class ProductService {
 		return GetDao().getProductsByType(type);
 	}
 	
-	public List<Product> getAllProductsByType(double price){
+	public List<Product> getAllProductsByPrice(double price){
 		return GetDao().getProductsByPrice(price);
 	}
 	
 	public List<Product> getAllProductsBySearch(String searchPhrase){
-		return GetDao().getProductsBySearch(searchPhrase);
+		return GetDao().getProductsByProductName(searchPhrase);
 	}
 	
 	private ProductDAO GetDao() {

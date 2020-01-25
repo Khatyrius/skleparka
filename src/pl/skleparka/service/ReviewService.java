@@ -34,6 +34,18 @@ public class ReviewService {
 		GetDao().create(review);
 	}
 	
+	public void updateReview(int reviewId, String description, int rating) {
+		Review review = ReviewService.getInstance().getReview(reviewId);
+		
+		if(!description.isEmpty() && !description.equals(review.getDescription())) {
+			review.setDescription(description);
+		}
+		
+		if(rating != 0 && rating != review.getRating());
+		
+		GetDao().update(review);
+	}
+	
 	public Review getReview(int reviewId) {
 		return GetDao().read(reviewId);
 	}

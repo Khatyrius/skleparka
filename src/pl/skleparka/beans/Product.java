@@ -2,7 +2,7 @@ package pl.skleparka.beans;
 
 public class Product {
 private int productId;
-private String itemName;
+private String productName;
 private int quantity;
 private String type;
 private double price;
@@ -12,11 +12,11 @@ private int sellerId;
 
 public Product(){}
 
-public Product(int productId, String itemName, int quantity, String type, double price, String description,
+public Product(int productId, String productName, int quantity, String type, double price, String description,
 		String imageUrl, int sellerId) {
 	super();
 	this.productId = productId;
-	this.itemName = itemName;
+	this.productName = productName;
 	this.quantity = quantity;
 	this.type = type;
 	this.price = price;
@@ -33,12 +33,12 @@ public void setProductId(int productId) {
 	this.productId = productId;
 }
 
-public String getItemName() {
-	return itemName;
+public String getProductName() {
+	return productName;
 }
 
-public void setItemName(String itemName) {
-	this.itemName = itemName;
+public void setProductName(String itemName) {
+	this.productName = itemName;
 }
 
 public int getQuantity() {
@@ -95,7 +95,7 @@ public int hashCode() {
 	int result = 1;
 	result = prime * result + ((description == null) ? 0 : description.hashCode());
 	result = prime * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
-	result = prime * result + ((itemName == null) ? 0 : itemName.hashCode());
+	result = prime * result + ((productName == null) ? 0 : productName.hashCode());
 	long temp;
 	temp = Double.doubleToLongBits(price);
 	result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -125,10 +125,10 @@ public boolean equals(Object obj) {
 			return false;
 	} else if (!imageUrl.equals(other.imageUrl))
 		return false;
-	if (itemName == null) {
-		if (other.itemName != null)
+	if (productName == null) {
+		if (other.productName != null)
 			return false;
-	} else if (!itemName.equals(other.itemName))
+	} else if (!productName.equals(other.productName))
 		return false;
 	if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 		return false;
@@ -148,7 +148,7 @@ public boolean equals(Object obj) {
 
 @Override
 public String toString() {
-	return "Product [productId=" + productId + ", itemName=" + itemName + ", quantity=" + quantity + ", type=" + type
+	return "Product [productId=" + productId + ", itemName=" + productName + ", quantity=" + quantity + ", type=" + type
 			+ ", price=" + price + ", description=" + description + ", imageUrl=" + imageUrl + ", sellerId=" + sellerId
 			+ "]";
 }

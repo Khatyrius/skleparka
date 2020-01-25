@@ -34,7 +34,7 @@ public class SessionController implements HttpSessionListener  {
 			
 			for(Product product: products) {		
 				cartService.deleteItemFromUserCart(product.getProductId(), user.getId());
-				productService.updateProduct(product.getProductId(), productService.getProduct(product.getProductId()).getQuantity() + product.getQuantity(), "", 0.0, "", "");
+				productService.updateProduct(product.getProductId(),product.getProductName(), productService.getProduct(product.getProductId()).getQuantity() + product.getQuantity(), "", 0.0, "", "");
 			}
 			
 			System.out.println("Removed producuts from cart of user " + user.getUsername());

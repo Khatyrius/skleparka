@@ -18,6 +18,18 @@
 	
    <div class="container">
   <div class="row">
+  <form class ="col-md-2 col-md-offset-1" action="profile" method="GET">
+  	<input type="hidden" name="command" value="userProfile" />
+    <input type=submit class="btn btn-primary" value="Profil">
+    </form>
+      
+    <form class ="col-md-2" action="profile" method=GET>
+  	<input type="hidden" name="command" value="orderHistory" />
+    <input type=submit class="btn btn-success" value="Historia zamówień">
+    </form>
+    <br>
+  <c:choose>
+  <c:when test="${command == 'userProfile'}">
   <!--Table-->
   <h3>Dane podstawowe:</h3>
 	<table id="tablePreview" class="table table-hover table-bordered">
@@ -74,6 +86,30 @@
   </tbody>
   <!--Table body-->
 </table>
+</c:when>
+<c:when test="${command == 'orderHistory' }">
+<table id="tablePreview" class="table table-hover table-bordered">
+  	<thead>
+    <tr>
+      <th>ID</th>
+      <th>Data zamówienia</th>
+      <th>Status</th>
+      <th>Wartość</th>
+    </tr>
+  </thead>
+  	<tbody>
+ 	<c:forEach var="temp" items="${ordersList}" > 
+    <tr>
+      <th scope="row"><c:out value="${temp.getOrderId()}"/></th>
+      <td><c:out value="${temp.getOrderDate()}"/></td>
+      <td><c:out value="${temp.getStatus()}"/></td>
+      <td><c:out value="${temp.getTotal()} zł"/></td>
+    </tr>
+   	</c:forEach>
+  	</tbody>
+	</table>
+</c:when>
+</c:choose>
   </div>
 </div>
    

@@ -19,8 +19,6 @@ public class BillingInfoService {
         return instance;
     }
 	
-	
-	
 	public void addBillingInfo(int userId, String cardNumber, Date expirationDate, int securityCode, String billingAddress) {
 		BillingInfo billingInfo = new BillingInfo();
 		billingInfo.setUserId(userId);

@@ -20,7 +20,7 @@ public class ProductDAOImpl implements ProductDAO{
 						+",type, price, description,"
 						+"image_url, seller_id)"
 						+" VALUES("
-						+"\'"+ newProduct.getItemName()+"\', "
+						+"\'"+ newProduct.getProductName()+"\', "
 						+ newProduct.getQuantity() + ", "
 						+"\'"+ newProduct.getType() + "\', "
 						+ newProduct.getPrice() + ", "
@@ -53,7 +53,7 @@ public class ProductDAOImpl implements ProductDAO{
 			
 			if (rs.next()) {
 				product.setProductId(productId);
-				product.setItemName(rs.getString("item_name"));
+				product.setProductName(rs.getString("item_name"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setType(rs.getString("type"));
 				product.setPrice(rs.getDouble("price"));
@@ -76,7 +76,7 @@ public class ProductDAOImpl implements ProductDAO{
 		Statement st;
 		try {
 			con = DBConnector.getConnection();
-			String query = "UPDATE item SET item_name = \'" + updatedProduct.getItemName() +"\'"
+			String query = "UPDATE item SET item_name = \'" + updatedProduct.getProductName() +"\'"
 							+ ", quantity = "+ updatedProduct.getQuantity()
 							+ ", type = \'" + updatedProduct.getType() + "\'"
 							+ ", price = " + updatedProduct.getPrice()
@@ -127,7 +127,7 @@ public class ProductDAOImpl implements ProductDAO{
 
 				Product product = new Product();
 				product.setProductId(rs.getInt("item_id"));
-				product.setItemName(rs.getString("item_name"));
+				product.setProductName(rs.getString("item_name"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setType(rs.getString("type"));
 				product.setPrice(rs.getDouble("price"));
@@ -159,7 +159,7 @@ public class ProductDAOImpl implements ProductDAO{
 			while (rs.next()) {
 				Product product = new Product();
 				product.setProductId(rs.getInt("item_id"));
-				product.setItemName(rs.getString("item_name"));
+				product.setProductName(rs.getString("item_name"));
 				product.setType(rs.getString("type"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setPrice(rs.getDouble("price"));
@@ -190,7 +190,7 @@ public class ProductDAOImpl implements ProductDAO{
 			rs = st.executeQuery(query);		
 			if (rs.next()) {
 				product.setProductId(rs.getInt("item_id"));
-				product.setItemName(itemName);
+				product.setProductName(itemName);
 				product.setType(rs.getString("type"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setPrice(rs.getDouble("price"));
@@ -214,13 +214,13 @@ public class ProductDAOImpl implements ProductDAO{
 		Statement st = null;
 		try {
 			con = DBConnector.getConnection();
-			String query = "SELECT * from item WHERE type = \'" +type + "\';";
+			String query = "SELECT * from item WHERE type LIKE \'%" +type + "%\';";
 			st = con.createStatement();
 			rs = st.executeQuery(query);
 			while(rs.next()) {
 				Product product = new Product();
 				product.setProductId(rs.getInt("item_id"));
-				product.setItemName(rs.getString("item_name"));
+				product.setProductName(rs.getString("item_name"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setType(rs.getString("type"));
 				product.setPrice(rs.getDouble("price"));
@@ -252,7 +252,7 @@ public class ProductDAOImpl implements ProductDAO{
 			while(rs.next()) {
 				Product product = new Product();
 				product.setProductId(rs.getInt("item_id"));
-				product.setItemName(rs.getString("item_name"));
+				product.setProductName(rs.getString("item_name"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setType(rs.getString("type"));
 				product.setPrice(rs.getDouble("price"));
@@ -271,20 +271,20 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public List<Product> getProductsBySearch(String searchPhrase) {
+	public List<Product> getProductsByProductName(String searchPhrase) {
 		ArrayList<Product> products = new ArrayList<Product>();
 		Connection con;
 		ResultSet rs;
 		Statement st = null;
 		try {
 			con = DBConnector.getConnection();
-			String query = "SELECT * from item where item_name like '%" + searchPhrase + "%';";
+			String query = "SELECT * from item where item_name like \'%" + searchPhrase + "%\';";
 			st = con.createStatement();
 			rs = st.executeQuery(query);
 			while(rs.next()) {
 				Product product = new Product();
 				product.setProductId(rs.getInt("item_id"));
-				product.setItemName(rs.getString("item_name"));
+				product.setProductName(rs.getString("item_name"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setType(rs.getString("type"));
 				product.setPrice(rs.getDouble("price"));

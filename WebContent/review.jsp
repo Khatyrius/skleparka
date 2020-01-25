@@ -39,7 +39,7 @@
     <tr>
       <th scope="row"></th>
       <td><img src="<c:out value="${temp.getImageUrl()}"/>" alt="Nie można załadować zdjęcia" height="250" width="250"></td>
-      <td><c:out value="${temp.getItemName()}"/></td>
+      <td><c:out value="${temp.getProductName()}"/></td>
       <td><c:out value="${temp.getQuantity()}"/></td>
       <td><c:out value="${temp.getType()}"/></td>
       <td><c:out value="${temp.getPrice()}zł"/></td>
@@ -73,10 +73,33 @@
       <td><c:out value="${temp.getDescription()}"/></td>
       <td><c:out value="${temp.getRating()}"/></td>
       <c:if test="${temp.getUserId() == users.getId()}">
-      <td><input type="submit" class = "col-md-5 btn btn-sm btn-danger btn-block" Value="Usuń"></td>
-      <td><input type="submit" class = "col-md-5 btn btn-sm btn-warning btn-block" Value="Edytuj"></td>
+      <td><form action="review" method=POST>
+      <input type="hidden" name="command" value="removeReview"/>
+      <input type="hidden" name="reviewId" value="${temp.getReviewId()}"/>
+      <input type="submit" class="btn btn-sm btn-danger btn-block" value="Usuń ">   
+      </form></td>  
+      
+      <td><form action="updateReview" method=GET>
+      <input type="hidden" name="reviewId" value="${temp.getReviewId()}"/>
+      <input type="submit" class="btn btn-sm btn-warning btn-block" value="Edytuj">   
+      </form></td>  
       </c:if>
    </c:forEach>
+   <c:if test="${users!=null }">
+   <c:if test ="${!userList.contains(users) }">
+   	<tr>
+   		<td></td>
+   		<td></td>
+   		<td></td>
+   		<td></td>
+   		<td></td>
+   		<td><form action="addReview" method="GET">
+   		<input type="hidden" name="productId" value="${product.get(0).getProductId()}"/>
+   	 	<input type=submit class="btn btn-sm btn-success btn-block" value="Dodaj nowy komentarz"/>
+    	</form></td>
+    </tr>
+    </c:if>
+   </c:if>
   </tbody>
   <!--Table body-->
 </table>
