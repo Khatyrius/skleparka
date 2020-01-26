@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Skleparka - zaktualizuj recenzje</title>
+    <title>Skleparka - zaktalizuj produkt</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -17,20 +17,27 @@
       	
     <div class="row" id="center">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form role="form" action="updateReview" method="post">
+		<form role="form" action="billingInfo" method="post">
 			<fieldset>
-				<h2>Edytuj recenzje:</h2>
+				<h2>Edytuj dane do płatności:</h2>
 				<hr class="colorgraph">
 				<div class="form-group">
-                    Komentarz:<input name="description" value='<c:out value="${updateReview.getDescription() }"></c:out>' type="text" class="form-control"  placeholder="Komentarz" required autofocus />
+                    <input name="cardNumber" value='<c:out value="${billingInfo.getCardNumber() }"></c:out>' maxlength="16" type="text" class="form-control"  placeholder="Numer karty" required autofocus />
 				</div>
 				<div class="form-group">
-                   Ocena:<input name="rating" value='<c:out value="${updateReview.getRating() }"></c:out>' min="1" max="5" type="text" name="quantity" class="form-control" placeholder="Ocena" required autofocus />
+                    <input name="expirationDate" value='<c:out value="${billingInfo.getExpirationDate() }"></c:out>' type="date" name="quantity" class="form-control" placeholder="Data ważności" required autofocus />
+				</div>
+				<div class="form-group">
+                    <input name="securityCode" value='<c:out value="${billingInfo.getSecurityCode() }"></c:out>' type="number" min="100" max="999" class="form-control" placeholder="Kod CVV" required autofocus/>
+				</div>
+				<div class="form-group">
+                    <input name="billingAddress" value='<c:out value="${billingInfo.getBillingAddress() }"></c:out>' type="text" maxlength="45" class="form-control" placeholder="Adres" required autofocus/>
 				</div>
 				<hr class="colorgraph">
 				<div class="row">
 					<div class="center">
-                        <input type="submit" class="btn btn-xl btn-success btn-block" value="Aktualizuj recenzje">
+						<input type="hidden" name="command" value="updateBillingInfo" />
+                        <input type="submit" class="btn btn-xl btn-primary btn-block" value="Aktualizuj">
 					</div>
 					
 				</div>

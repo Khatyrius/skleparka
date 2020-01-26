@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Skleparka - rejestracja</title>
+    <title>Skleparka - zaktalizuj produkt</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" type="text/css" rel="stylesheet">
@@ -25,7 +25,7 @@
                     Nazwa produktu: <input name="productName" value='<c:out value="${updateProduct.getProductName() }"></c:out>' type="text" class="form-control"  placeholder="Nazwa produktu" required autofocus />
 				</div>
 				<div class="form-group">
-                    Ilość: <input name="quantity" min="0" value='<c:out value="${updateProduct.getQuantity() }"></c:out>' type="text" name="quantity" class="form-control" placeholder="Ilość" required autofocus />
+                    Ilość: <input name="quantity" min="0" value='<c:out value="${updateProduct.getQuantity() }"></c:out>' type="number" name="quantity" class="form-control" placeholder="Ilość" required autofocus />
 				</div>
 				<div class="form-group">
                     Typ: <input name="type" value='<c:out value="${updateProduct.getType() }"></c:out>' type="text" class="form-control" placeholder="Typ" required autofocus/>

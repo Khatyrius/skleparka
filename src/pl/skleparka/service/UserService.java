@@ -45,7 +45,7 @@ public class UserService {
 			user.setFirstName(firstName);
 		}
 		
-		if(!middleName.isEmpty() && !middleName.equals(user.getMiddleName())) {
+		if(!middleName.equals(user.getMiddleName())) {
 			user.setMiddleName(middleName);
 		}
 		

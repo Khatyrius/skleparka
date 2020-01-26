@@ -42,8 +42,10 @@ public class LoginController extends HttpServlet {
 			System.out.println("Zalogowa³ siê u¿ytkownik: " + user);
 			session.setAttribute("users", user);
 			request.setAttribute("users", user);
+			if(BillingInfoService.getInstance().getBillingInfoByUserId(user.getId()).getBillingInfoId() > 0) {
 			session.setAttribute("billingInfo", userBillingInfo);
 	   		request.setAttribute("billingInfo", userBillingInfo);
+			}
 	   		response.sendRedirect(request.getContextPath());
 		} else if(isActive){
 			session.invalidate();

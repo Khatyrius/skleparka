@@ -38,7 +38,7 @@ public class BillingInfoService {
 	public void updateBillingInfo(int billingInfoId, String cardNumber, Date expirationDate, int securityCode, String billingAddress) {
 		BillingInfo billingInfo = GetDao().read(billingInfoId);
 		
-		if(!cardNumber.isEmpty() && cardNumber.equals(billingInfo.getCardNumber())) {
+		if(!cardNumber.isEmpty() && !cardNumber.equals(billingInfo.getCardNumber())) {
 			billingInfo.setCardNumber(cardNumber);
 		}
 		
@@ -50,7 +50,7 @@ public class BillingInfoService {
 			billingInfo.setSecurityCode(securityCode);
 		}
 		
-		if(!billingAddress.isEmpty() && !billingAddress.equals(billingAddress)) {
+		if(!billingAddress.isEmpty() && !billingAddress.equals(billingInfo.getBillingAddress())) {
 			billingInfo.setBillingAddress(billingAddress);
 		}
 		

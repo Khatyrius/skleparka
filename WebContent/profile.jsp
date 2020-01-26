@@ -52,8 +52,15 @@
       <td><c:out value="${users.getFirstName()}"/></td>
       <td><c:out value="${users.getMiddleName()}"/></td>
       <td><c:out value="${users.getLastName()}"/></td>
-      <td><input type="submit" class="btn btn-sm btn-warning btn-block" value="Zaktalizuj dane"></td>
-      <td><input type="submit" class="btn btn-sm btn-success btn-block" value="Zmień hasło"></td>
+     <td><form action="editProfile" method="GET">
+  	<input type="hidden" name="command" value="editProfile" />
+    <input type=submit class="btn btn-warning" value="Zaktalizuj dane">
+    </form></td>
+    <td><form action="editProfile" method="GET">
+  	<input type="hidden" name="command" value="changePassword" />
+    <input type=submit class="btn btn-success" value="Zmień hasło">
+    </form></td>
+     
     </tr>
   </tbody>
   <!--Table body-->
@@ -80,8 +87,19 @@
       <td><c:out value="${billingInfo.getExpirationDate()}"/></td>
       <td><c:out value="${billingInfo.getSecurityCode()}"/></td>
       <td><c:out value="${billingInfo.getBillingAddress()}"/></td>
-      <td><input type="submit" class="btn btn-sm btn-warning btn-block" value="Zaktalizuj dane"></td>
-      <td><input type="submit" class="btn btn-sm btn-success btn-block" value="Dodaj dane do płatności"></td>
+    <c:if test="${billingInfo != null }">
+    <td><form action="billingInfo" method="GET">
+  	<input type="hidden" name="command" value="updateBillingInfo" />
+    <input type=submit class="btn btn-warning" value="Zaktalizuj dane">
+    </form></td>
+    </c:if>
+    <c:if test="${billingInfo == null }">
+    <td><form action="billingInfo" method="GET">
+  	<input type="hidden" name="command" value="addBillingInfo" />
+    <input type=submit class="btn btn-success" value="Dodaj dane do płatności">
+    </form></td>
+    </c:if>
+
     </tr>
   </tbody>
   <!--Table body-->

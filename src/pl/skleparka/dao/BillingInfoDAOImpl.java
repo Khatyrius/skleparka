@@ -17,10 +17,10 @@ public class BillingInfoDAOImpl implements BillingInfoDAO {
 		try {
 			con = DBConnector.getConnection();
 			String query = "INSERT INTO billing_info(user_id,card_number"
-						+",expiration_date, security_code, billing_address,)"
+						+",expiration_date, security_code, billing_address)"
 						+" VALUES("
 						+ newBillingInfo.getUserId()+", "
-						+"\'"+ newBillingInfo.getCardNumber() + "\', "
+						+ newBillingInfo.getCardNumber()+", "
 						+"\'"+ newBillingInfo.getExpirationDate() + "\', "
 						+ newBillingInfo.getSecurityCode() + ", "
 						+"\'"+ newBillingInfo.getBillingAddress() + "\')";
