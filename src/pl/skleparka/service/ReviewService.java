@@ -41,7 +41,9 @@ public class ReviewService {
 			review.setDescription(description);
 		}
 		
-		if(rating != 0 && rating != review.getRating());
+		if(rating != 0 && rating != review.getRating()) {
+			review.setRating(rating);
+		}
 		
 		GetDao().update(review);
 	}

@@ -26,7 +26,7 @@ public class ProductService {
 		product.setPrice(price);
 		product.setDescription(description);
 		product.setImageUrl(imageUrl);
-		product.setSellerId(sellerId);
+		product.setSellerId(1);
 		
 		GetDao().create(product);
 	}
@@ -38,7 +38,7 @@ public class ProductService {
 	public void updateProduct(int productId, String productName, int quantity, String type, double price, String description, String imageUrl) {
 		Product product = getProduct(productId);
 		
-		if(productName.isEmpty() && !productName.equals(product.getProductName())) {
+		if(!productName.isEmpty() && !productName.equals(product.getProductName())) {
 			product.setProductName(productName);
 		}
 		

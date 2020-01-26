@@ -37,9 +37,9 @@
     <tr>
       <th scope="row"><%= count %></th>
       <td><img src="<c:out value="${temp.getImageUrl()}"/>" alt="Nie można załadować zdjęcia" height="250" width="250"></td>
-      <td><c:out value="${temp.getItemName()}"/></td>
+      <td><c:out value="${temp.getProductName()}"/></td>
       <td><c:out value="${temp.getQuantity()}"/></td>
-      <td><c:out value="${temp.getPrice() * temp.getQuantity()}zł"/></td>
+      <td><c:out value="${temp.getPrice() * temp.getQuantity()} zł"/></td>
       <td><form action="cart" method=POST>
       <input type="hidden" name="action" value="removeFromCart"/>
       <input type="hidden" name="productId" value="${temp.getProductId()}"/>

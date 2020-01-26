@@ -76,8 +76,10 @@ public class CartController extends HttpServlet {
 		private void addToCart(HttpServletRequest request, HttpServletResponse response, int productId) throws ServletException, IOException {
 			HttpSession session = request.getSession();
 			int userId = ((User)session.getAttribute("users")).getId();
+			if(productService.getProduct(productId).getQuantity() > 0) {
 			cartService.addItemToUserCart(productId, userId);
 			productService.updateProduct(productId,"", productService.getProduct(productId).getQuantity()-1, "", 0.0, "", "");
+			}
 			response.sendRedirect(request.getContextPath() + "/shop");
 		}
 		

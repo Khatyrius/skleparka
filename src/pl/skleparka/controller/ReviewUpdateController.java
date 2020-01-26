@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import pl.skleparka.beans.Review;
+import pl.skleparka.beans.User;
 import pl.skleparka.service.ReviewService;
 
 /**
@@ -45,11 +46,15 @@ public class ReviewUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Review review = (Review) session.getAttribute("updateReview");
+		int userId = ((User)session.getAttribute("users")).getId();
 		int reviewId = review.getReviewId();
 		String description = request.getParameter("description");
 		int rating = Integer.valueOf(request.getParameter("rating"));
 		int productId = review.getProductId();
+		
+		if(userId == review.getUserId()) {
 		ReviewService.getInstance().updateReview(reviewId, description, rating);
+		}
 		response.sendRedirect(request.getContextPath() + "/review?productId=" + productId);
 		}
 
