@@ -22,4 +22,9 @@ servlet-api.jar.
 
 Yeah, I know I could have used maven or gradle for this but we have to make this project with basic of the basics(no maven/spring etc).
 
-In a later update I will add tests with JUnit.
+For test to work you need to download and add to build path the following files:
+
+
+junit-4.13.jar - https://search.maven.org/remotecontent?filepath=junit/junit/4.13/junit-4.13.jar
+
+hamcrest-core-1.3.jar - https://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
