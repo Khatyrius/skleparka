@@ -77,7 +77,10 @@
       <c:if test="${temp.getQuantity() eq 0 }">
       <td><input class="btn btn-sm btn-danger btn-block" value="Dodaj do koszyka"></td>
       </c:if> 
-      <td><input type="submit" class="btn btn-sm btn-success btn-block" value="Kup teraz"></td>
+      <td><form action="buyProduct" method=GET>
+      <input type="hidden" name="productId" value="${temp.getProductId()}"/>
+      <input type="submit" class="btn btn-sm btn-success btn-block" value="Kup teraz"> 
+      </form></td>  
       <% } %>
     </tr>
     <% count++; %>
