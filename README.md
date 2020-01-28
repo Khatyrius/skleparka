@@ -28,3 +28,5 @@ For test to work you need to download and add to build path the following files:
 junit-4.13.jar - https://search.maven.org/remotecontent?filepath=junit/junit/4.13/junit-4.13.jar
 
 hamcrest-core-1.3.jar - https://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+
+or you can just unpack the file neededJars.7z in the same folder :)
