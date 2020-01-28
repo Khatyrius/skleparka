@@ -19,17 +19,16 @@
 	</div>
 	</c:if>
     <jsp:include page="headerChanger.jsp"/>
-    <div class="container">
-   	<div class="row">
-   <h2>Spicy jalapeno bacon ipsum dolor amet alcatra spare ribs short ribs kielbasa shoulder pork tail biltong. Drumstick frankfurter shank pork loin tail kielbasa. Pork loin ham salami meatball pork belly. Ground round shoulder chicken kevin, jerky corned beef tongue drumstick brisket buffalo porchetta.<br><br>
-
-Cow chicken kevin turducken chislic. Buffalo cupim turducken venison tenderloin beef chuck picanha alcatra meatball bacon tongue meatloaf rump short loin. Pancetta rump meatloaf shankle ham hock chislic turkey turducken. Venison capicola tail tenderloin.<br><br>
-
-Strip steak venison beef leberkas, tenderloin capicola pancetta tri-tip. Shank venison ground round, tri-tip spare ribs pork loin t-bone landjaeger pastrami meatball bresaola filet mignon. Spare ribs pig short loin tail cow shoulder bresaola ball tip biltong shank corned beef tenderloin landjaeger ham hock leberkas. Venison chicken t-bone, chislic meatloaf fatback pancetta drumstick pork chop. Boudin tail ribeye bacon biltong short loin. Alcatra spare ribs leberkas rump doner fatback chuck tail meatloaf bresaola short ribs.<br><br>
-
-Beef ribs jerky tail, burgdoggen pancetta ham buffalo. Doner turducken pork loin landjaeger ground round. Ham porchetta pork beef ribs shank. Landjaeger shank brisket, pig shoulder flank drumstick corned beef. Sausage pancetta biltong burgdoggen frankfurter shoulder. Strip steak rump kevin beef jerky ham landjaeger pork chicken ham hock tenderloin venison pork belly chislic turducken.<br><br>
-
-Biltong drumstick brisket alcatra short loin shankle tail chicken picanha pork turducken cow tri-tip beef ground round. Capicola t-bone spare ribs, swine shoulder shank boudin chicken frankfurter ham ham hock alcatra filet mignon. Pork chop meatloaf kielbasa, pancetta swine porchetta buffalo shank ground round. Strip steak porchetta prosciutto, short ribs bacon sirloin ham hock spare ribs ribeye sausage picanha pork cupim meatloaf filet mignon. Shoulder drumstick leberkas prosciutto biltong ground round beef ribs kielbasa sirloin.</h2>
+    <div class="row" id="center">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    	<br><br><br>
+   		<font size="5"><p>Jesteśmy jednym z <strong>największych producentów</strong> i sprzedawców asortymentu
+   		drukarskiego. Jest to dla nas wielkie zobowiązanie.
+   		<p>Jesteśmy w stanie dostarczyć <strong>każdą drukarkę</strong> do naszych klientów w 
+   		zaledwie <strong>kilka godzin</strong> od daty zakupu.
+   		<p>Współpracujemy z gigantami rynkowymi takimi jak <strong>Apple, Tesla</strong> czy 
+   		<strong>NASA</strong>.
+   		<p>Zapewniamy <strong>gwarancję</strong> udanych zakupów oraz <strong>szybkiej</strong> dostawy.</font>
    </div>
    </div>
    <jsp:include page="footer.jsp"/>
