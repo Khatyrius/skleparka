@@ -32,6 +32,7 @@ public class ProfileEditController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String command = request.getParameter("command");
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		session.setAttribute("command", command);
 		if(command.equals("editProfile")) {
@@ -47,6 +48,7 @@ public class ProfileEditController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		session.setAttribute("command", command);
 		int userId = ((User)session.getAttribute("users")).getId();
 		switch(command) {

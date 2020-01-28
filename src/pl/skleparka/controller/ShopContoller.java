@@ -36,6 +36,7 @@ public class ShopContoller extends HttpServlet {
 		// TODO Auto-generated method stub
 		ProductService productService = ProductService.getInstance();
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
    		String command = request.getParameter("command");
    		session.setAttribute("command", command);
    		if(command == null) command = "";
@@ -62,7 +63,7 @@ public class ShopContoller extends HttpServlet {
 		String searchPhrase = request.getParameter("search");
 		String parameter = request.getParameter("parameter");
 		ProductFilter productFilter = new ProductFilter();
-		
+		request.setCharacterEncoding("UTF-8");
 		if(parameter == null) parameter = "name";
 		switch(parameter) {
 		case "name": productFilter.filterProductsByName(request, response, searchPhrase);

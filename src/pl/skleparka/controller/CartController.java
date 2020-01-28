@@ -62,6 +62,7 @@ public class CartController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String command = request.getParameter("action");
+		request.setCharacterEncoding("UTF-8");
 		int productId = Integer.valueOf(request.getParameter("productId"));
 		if(command == null) command = "addToCart";
 		switch(command) {

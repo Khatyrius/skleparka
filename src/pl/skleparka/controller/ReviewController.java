@@ -78,6 +78,7 @@ public class ReviewController extends HttpServlet {
 		HttpSession session = request.getSession();
 		String command = request.getParameter("command");
 		session.setAttribute("command", command);
+		request.setCharacterEncoding("UTF-8");
 		int reviewId = Integer.valueOf(request.getParameter("reviewId"));
 		if(command == null) command = "editReview";
 		switch(command) {

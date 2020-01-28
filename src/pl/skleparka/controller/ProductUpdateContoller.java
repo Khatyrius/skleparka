@@ -32,6 +32,7 @@ public class ProductUpdateContoller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		Product product = ProductService.getInstance().getProduct(Integer.valueOf(request.getParameter("productId")));
 		session.setAttribute("updateProduct", product);
 		request.setAttribute("updateProduct", product);

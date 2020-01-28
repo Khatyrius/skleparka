@@ -35,6 +35,7 @@ public class BuyProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		int productId = Integer.valueOf(request.getParameter("productId"));
 		Product product = ProductService.getInstance().getProduct(productId);
 		product.setQuantity(1);

@@ -42,6 +42,7 @@ public class ReviewAddController extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		String description = request.getParameter("description");
+		request.setCharacterEncoding("UTF-8");
 		int rating = Integer.valueOf(request.getParameter("rating"));
 		int userId = ((User)session.getAttribute("users")).getId();
 		int productId = Integer.valueOf(session.getAttribute("productId").toString());

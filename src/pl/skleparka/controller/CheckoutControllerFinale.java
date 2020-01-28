@@ -45,6 +45,7 @@ public class CheckoutControllerFinale extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		User user = (User)session.getAttribute("users");
 		orderId = (int)session.getAttribute("orderId");
 		trackingNumber = (String) session.getAttribute("trackingNumber");

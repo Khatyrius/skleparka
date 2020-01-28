@@ -44,6 +44,7 @@ public class ControlPanelController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String command = request.getParameter("command");
+		request.setCharacterEncoding("UTF-8");
 		if(command == null) command = "controlUsers";
 		switch(command) {
 		case "controlUsers": controlUsers(request, response);
@@ -175,6 +176,7 @@ public class ControlPanelController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("action");
+		request.setCharacterEncoding("UTF-8");
 		int userId = Integer.valueOf(request.getParameter("userId"));
 		if(command == null) command = "blockUser";
 		switch(command) {

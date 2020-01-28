@@ -36,6 +36,7 @@ public class ProfileController extends HttpServlet {
    	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
    			IOException {
     	HttpSession session = request.getSession();
+    	request.setCharacterEncoding("UTF-8");
     	String command = request.getParameter("command");
 		if(command == null) command = "userProfile";
 		if(command.equals("orderHistory")) {

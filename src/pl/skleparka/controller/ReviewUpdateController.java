@@ -33,6 +33,7 @@ public class ReviewUpdateController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 		int reviewId = Integer.valueOf(request.getParameter("reviewId"));
 		Review review = ReviewService.getInstance().getReview(reviewId);
 		session.setAttribute("updateReview", review);
@@ -46,6 +47,7 @@ public class ReviewUpdateController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Review review = (Review) session.getAttribute("updateReview");
+		request.setCharacterEncoding("UTF-8");
 		int userId = ((User)session.getAttribute("users")).getId();
 		int reviewId = review.getReviewId();
 		String description = request.getParameter("description");
