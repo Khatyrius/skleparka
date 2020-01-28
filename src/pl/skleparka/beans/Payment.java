@@ -8,13 +8,12 @@ public class Payment {
 	private int sellerId;
 	private int billingId;
 	private int orderId;
-	private int shipmentId;
 	private String status;
 	
 	public Payment() {}
 
 	public Payment(int paymentId, String paymentType, int userId, double amount, int sellerId, int billingId,
-			int orderId, int shipmentId, String status) {
+			int orderId, String status) {
 		super();
 		this.paymentId = paymentId;
 		this.paymentType = paymentType;
@@ -23,7 +22,6 @@ public class Payment {
 		this.sellerId = sellerId;
 		this.billingId = billingId;
 		this.orderId = orderId;
-		this.shipmentId = shipmentId;
 		this.status = status;
 	}
 
@@ -83,14 +81,6 @@ public class Payment {
 		this.orderId = orderId;
 	}
 
-	public int getShipmentId() {
-		return shipmentId;
-	}
-
-	public void setShipmentId(int shipmentId) {
-		this.shipmentId = shipmentId;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -111,7 +101,6 @@ public class Payment {
 		result = prime * result + paymentId;
 		result = prime * result + ((paymentType == null) ? 0 : paymentType.hashCode());
 		result = prime * result + sellerId;
-		result = prime * result + shipmentId;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + userId;
 		return result;
@@ -141,8 +130,6 @@ public class Payment {
 			return false;
 		if (sellerId != other.sellerId)
 			return false;
-		if (shipmentId != other.shipmentId)
-			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;
@@ -157,7 +144,7 @@ public class Payment {
 	public String toString() {
 		return "Payment [paymentId=" + paymentId + ", paymentType=" + paymentType + ", userId=" + userId + ", amount="
 				+ amount + ", sellerId=" + sellerId + ", billingId=" + billingId + ", orderId=" + orderId
-				+ ", shipmentId=" + shipmentId + ", status=" + status + "]";
+				+ ", status=" + status + "]";
 	}
 
 	

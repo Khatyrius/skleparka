@@ -18,16 +18,15 @@ public class PaymentService {
         return instance;
     }
 	
-	public void addPayment(String paymentType, int userId, double amount, int sellerId, int billingId, int orderId, int shipmentId) {
+	public void addPayment(String paymentType, int userId, double amount, int sellerId, int billingId, int orderId) {
 		Payment payment = new Payment();
 		
 		payment.setPaymentType(paymentType);
 		payment.setUserId(userId);
 		payment.setAmount(amount);
-		payment.setSellerId(sellerId);
+		payment.setSellerId(1);
 		payment.setBillingId(billingId);
 		payment.setOrderId(orderId);
-		payment.setShipmentId(shipmentId);
 		payment.setStatus("pending".toUpperCase());
 		
 		GetDao().create(payment);
@@ -52,10 +51,6 @@ public class PaymentService {
 	
 	public Payment getPaymentForOrder(int orderId) {
 		return GetDao().getPaymentForOrder(orderId);
-	}
-	
-	public Payment getPaymentForShipmnet(int shipmentId) {
-		return GetDao().getPaymentForShipement(shipmentId);
 	}
 	
 	public List<Payment> getAllPaymentsOfUser(int userId){

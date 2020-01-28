@@ -183,14 +183,13 @@
     </tr>
   </thead>
   	<tbody>
- 	<c:forEach var="temp" items="${ordersList}" > 
+ 	<c:forEach var="temp" items="${orderList}" > 
     <tr>
       <th scope="row"><c:out value="${temp.getOrderId()}"/></th>
       <td><c:out value="${temp.getUserId()}"/></td>
       <td><c:out value="${temp.getOrderDate()}"/></td>
       <td><c:out value="${temp.getStatus()}"/></td>
       <td><c:out value="${temp.getTotal()} zł"/></td>
-      <td><input type="submit" class="btn btn-sm btn-warning btn-block" value="Uaktualnij dane"></td>
     </tr>
    	</c:forEach>
   	</tbody>
@@ -218,11 +217,10 @@
       <td><c:out value="${temp.getOrderId()}"/></td>
       <td><c:out value="${temp.getUserId()}"/></td>
       <td><c:out value="${temp.getTrackingNumber()}"/></td>
-      <td><c:out value="${temp.getReturnAddress()} zł"/></td>
+      <td><c:out value="${temp.getReturnAddress()}"/></td>
       <td><c:out value="${temp.getCarrier()}"/></td>
       <td><c:out value="${temp.getStatus()}"/></td>
        <td><c:out value="${temp.getCharge()} zł"/></td>
-      <td><input type="submit" class="btn btn-sm btn-warning btn-block" value="Uaktualnij dane"></td>
     </tr>
    	</c:forEach>
   	</tbody>
@@ -236,9 +234,7 @@
       <th>ID</th>
       <th>Typ</th>
       <th>ID użytkownika</th>
-      <th>ID danych adresowych</th>
       <th>ID zamówienia</th>
-      <th>ID dostawy</th>
       <th>Status</th>
       <th>Całość</th>
     </tr>
@@ -249,12 +245,9 @@
       <th scope="row"><c:out value="${temp.getPaymentId()}"/></th>
       <td><c:out value="${temp.getPaymentType()}"/></td>
       <td><c:out value="${temp.getUserId()}"/></td>
-      <td><c:out value="${temp.getBillingInfoId()}"/></td>
-      <td><c:out value="${temp.getOrderId()} zł"/></td>
-      <td><c:out value="${temp.getShipmentId()}"/></td>
+      <td><c:out value="${temp.getOrderId()}"/></td>
       <td><c:out value="${temp.getStatus()}"/></td>
       <td><c:out value="${temp.getAmount()} zł"/></td>
-      <td><input type="submit" class="btn btn-sm btn-warning btn-block" value="Uaktualnij dane"></td>
     </tr>
    	</c:forEach>
   	</tbody>

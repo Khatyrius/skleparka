@@ -21,8 +21,10 @@ public class DBConnector {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager
                     .getConnection(url, user, password);
+            connect.setAutoCommit(false);
         }
         catch(SQLException e){ 
+        	connect.rollback();
             e.printStackTrace();
         }
         return connect;		
@@ -30,10 +32,20 @@ public class DBConnector {
     
     public static void close(Connection con, ResultSet rs, Statement st){
     	try {
-    			if(con!= null) con.close();
+    		con.commit();
+    		if(con!= null) con.close();
 			if(rs != null) rs.close();
 			if(st != null) st.close();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    public static void rollback(Connection con) {
+    	try {
+			con.rollback();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

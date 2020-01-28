@@ -32,7 +32,7 @@ public class BillingInfoController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		HttpSession session = request.getSession();
 		session.setAttribute("command", command);
@@ -46,7 +46,7 @@ public class BillingInfoController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		HttpSession session = request.getSession();
 		session.setAttribute("command", command);
@@ -83,7 +83,6 @@ public class BillingInfoController extends HttpServlet {
 	private void updateBillingInfo(String cardNumber, Date expirationDate, int securityCode, String billingAddress,
 			int userId) {
 		int billingInfoId =BillingInfoService.getInstance().getBillingInfoByUserId(userId).getBillingInfoId();
-		System.out.println(billingAddress);
 		BillingInfoService.getInstance().updateBillingInfo(billingInfoId, cardNumber, expirationDate, securityCode, billingAddress);
 	}
 

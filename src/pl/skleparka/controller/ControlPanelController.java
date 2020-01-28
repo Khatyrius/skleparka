@@ -91,6 +91,7 @@ public class ControlPanelController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("productsList", products);
    		request.setAttribute("productsList", products);
+   		
    		System.out.println("Za³adowano liste produktów przez u¿ytkownika " + ((User)session.getAttribute("users")).getUsername());
 	}
 

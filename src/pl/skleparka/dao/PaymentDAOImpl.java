@@ -17,15 +17,15 @@ public class PaymentDAOImpl implements PaymentDAO{
 		try {
 			con = DBConnector.getConnection();
 			String query = "INSERT INTO payment(payment_type,customer_id"
-						+",amount, billing_id,"
-						+"order_id,shipment_id,status)"
+						+",amount, billing_id, seller_id,"
+						+"order_id,status)"
 						+" VALUES("
 						+"\'"+ newPayment.getPaymentType()+"\', "
 						+ newPayment.getUserId() + ", "
 						+ newPayment.getAmount() + ", "
 						+ newPayment.getBillingId() + ", "
+						+ newPayment.getSellerId() + ", "
 						+ newPayment.getOrderId() + ", "
-						+ newPayment.getShipmentId() + ", "
 						+"\'"+ newPayment.getStatus()+"\');";
 			
 			Statement st = con.createStatement();
@@ -58,7 +58,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 				payment.setPaymentType(rs.getString("payment_type"));
 				payment.setAmount(rs.getDouble("amount"));
 				payment.setSellerId(rs.getInt("seller_id"));
-				payment.setShipmentId(rs.getInt("shipment_id"));
 				payment.setOrderId(rs.getInt("order_id"));
 				payment.setBillingId(rs.getInt("billing_id"));
 				payment.setStatus(rs.getString("status"));
@@ -116,7 +115,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 					payment.setPaymentType(rs.getString("payment_type"));
 					payment.setAmount(rs.getDouble("amount"));
 					payment.setSellerId(rs.getInt("seller_id"));
-					payment.setShipmentId(rs.getInt("shipment_id"));
 					payment.setOrderId(rs.getInt("order_id"));
 					payment.setBillingId(rs.getInt("billing_id"));
 					payment.setStatus(rs.getString("status"));
@@ -147,7 +145,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 					payment.setPaymentType(rs.getString("payment_type"));
 					payment.setAmount(rs.getDouble("amount"));
 					payment.setSellerId(rs.getInt("seller_id"));
-					payment.setShipmentId(rs.getInt("shipment_id"));
 					payment.setOrderId(rs.getInt("order_id"));
 					payment.setBillingId(rs.getInt("billing_id"));
 					payment.setStatus(rs.getString("status"));
@@ -156,37 +153,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 				DBConnector.close(con, rs, st);
 			}catch (Exception e) {
 			System.out.println("Couldn't get a payment with order id =" + orderId);
-			e.printStackTrace();
-		}
-		return payment;
-	}
-
-	@Override
-	public Payment getPaymentForShipement(int shipmentId) {
-		Payment payment = new Payment();
-		Connection con;
-		ResultSet rs;
-		Statement st = null;
-		try {
-			con = DBConnector.getConnection();
-			String query = "SELECT * from payment WHERE shipment_id = " + shipmentId + ";";
-			st = con.createStatement();
-			rs = st.executeQuery(query);
-			if(rs.next()) {
-					payment.setPaymentId(rs.getInt("payment_id"));
-					payment.setUserId(rs.getInt("customer_id"));
-					payment.setPaymentType(rs.getString("payment_type"));
-					payment.setAmount(rs.getDouble("amount"));
-					payment.setSellerId(rs.getInt("seller_id"));
-					payment.setShipmentId(rs.getInt("shipment_id"));
-					payment.setOrderId(rs.getInt("order_id"));
-					payment.setBillingId(rs.getInt("billing_id"));
-					payment.setStatus(rs.getString("status"));
-			}
-				
-				DBConnector.close(con, rs, st);
-			}catch (Exception e) {
-			System.out.println("Couldn't get a payment with shipment id =" + shipmentId);
 			e.printStackTrace();
 		}
 		return payment;
@@ -210,7 +176,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 					payment.setPaymentType(rs.getString("payment_type"));
 					payment.setAmount(rs.getDouble("amount"));
 					payment.setSellerId(rs.getInt("seller_id"));
-					payment.setShipmentId(rs.getInt("shipment_id"));
 					payment.setOrderId(rs.getInt("order_id"));
 					payment.setBillingId(rs.getInt("billing_id"));
 					payment.setStatus(rs.getString("status"));
@@ -242,7 +207,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 					payment.setPaymentType(rs.getString("payment_type"));
 					payment.setAmount(rs.getDouble("amount"));
 					payment.setSellerId(rs.getInt("seller_id"));
-					payment.setShipmentId(rs.getInt("shipment_id"));
 					payment.setOrderId(rs.getInt("order_id"));
 					payment.setBillingId(rs.getInt("billing_id"));
 					payment.setStatus(rs.getString("status"));
@@ -274,7 +238,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 					payment.setPaymentType(rs.getString("payment_type"));
 					payment.setAmount(rs.getDouble("amount"));
 					payment.setSellerId(rs.getInt("seller_id"));
-					payment.setShipmentId(rs.getInt("shipment_id"));
 					payment.setOrderId(rs.getInt("order_id"));
 					payment.setBillingId(rs.getInt("billing_id"));
 					payment.setStatus(rs.getString("status"));
@@ -306,7 +269,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 					payment.setPaymentType(rs.getString("payment_type"));
 					payment.setAmount(rs.getDouble("amount"));
 					payment.setSellerId(rs.getInt("seller_id"));
-					payment.setShipmentId(rs.getInt("shipment_id"));
 					payment.setOrderId(rs.getInt("order_id"));
 					payment.setBillingId(rs.getInt("billing_id"));
 					payment.setStatus(rs.getString("status"));
@@ -338,7 +300,6 @@ public class PaymentDAOImpl implements PaymentDAO{
 					payment.setPaymentType(rs.getString("payment_type"));
 					payment.setAmount(rs.getDouble("amount"));
 					payment.setSellerId(rs.getInt("seller_id"));
-					payment.setShipmentId(rs.getInt("shipment_id"));
 					payment.setOrderId(rs.getInt("order_id"));
 					payment.setBillingId(rs.getInt("billing_id"));
 					payment.setStatus(rs.getString("status"));

@@ -38,8 +38,9 @@ public class ProfileController extends HttpServlet {
     	HttpSession session = request.getSession();
     	String command = request.getParameter("command");
 		if(command == null) command = "userProfile";
-		if(command == "orderHistory")
+		if(command.equals("orderHistory")) {
 			getUserOrderHsitory(request, response);    
+		}
 		session.setAttribute("command", command);
    		request.getRequestDispatcher("profile.jsp").forward(request, response);
 

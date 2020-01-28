@@ -116,7 +116,7 @@
     </tr>
   </thead>
   	<tbody>
- 	<c:forEach var="temp" items="${ordersList}" > 
+ 	<c:forEach var="temp" items="${orderHistory}" > 
     <tr>
       <th scope="row"><c:out value="${temp.getOrderId()}"/></th>
       <td><c:out value="${temp.getOrderDate()}"/></td>

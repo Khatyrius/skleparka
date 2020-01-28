@@ -80,7 +80,8 @@ public class ShipmentDAOImpl implements ShipmentDAO{
 			String query = "UPDATE shipment SET tracking_number = \'" + updatedShipment.getTrackingNumber() +"\'"
 							+ ", returnAddress = \'"+ updatedShipment.getReturnAddress() +"\'"
 							+ ", carrier = \'" + updatedShipment.getCarrier() +"\'" 
-							+ ", status = \'" + updatedShipment.getStatus() +"\';";
+							+ ", status = \'" + updatedShipment.getStatus() +"\' "
+							+ "WHERE shipment_id = "+ updatedShipment.getShipmentId() + ";";
 			
 			st = con.createStatement();
 			st.executeUpdate(query);
@@ -141,7 +142,7 @@ public class ShipmentDAOImpl implements ShipmentDAO{
 		Statement st = null;
 		try {
 			con = DBConnector.getConnection();
-			String query = "SELECT * from shipment WHERE tracking_number = " + trackingNumber + ";";
+			String query = "SELECT * from shipment WHERE tracking_number = \'" + trackingNumber + "\';";
 			st = con.createStatement();
 			rs = st.executeQuery(query);
 			
