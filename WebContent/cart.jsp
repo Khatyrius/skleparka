@@ -53,7 +53,11 @@
    		<td></td>
    		<td></td>
    		<td></td>
-   		<td><input type="submit" class="btn btn-sm btn-success btn-block" value="Kup"></td>
+   		<td><form action="cart" method=POST>
+    	 <input type="hidden" name="action" value="proceedToCheckout"/>
+    	 <input type="hidden" name="productId" value ="0"/>
+      	<input type="submit" class="btn btn-sm btn-success btn-block" value="Kup">   
+      	</form></td> 
    	</tr>
   </tbody>
   <!--Table body-->

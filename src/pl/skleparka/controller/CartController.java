@@ -70,10 +70,15 @@ public class CartController extends HttpServlet {
 			break;
 		case "removeFromCart" : removeFromCart(request, response, productId);
 			break;
+		case "proceedToCheckout" : proceedToCheckout(request, response);
 		default: addToCart(request, response, productId);
 		}
 	}
 		
+		private void proceedToCheckout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			request.getRequestDispatcher("buyFromCart.jsp").forward(request, response);		
+	}
+
 		private void addToCart(HttpServletRequest request, HttpServletResponse response, int productId) throws ServletException, IOException {
 			HttpSession session = request.getSession();
 			int userId = ((User)session.getAttribute("users")).getId();

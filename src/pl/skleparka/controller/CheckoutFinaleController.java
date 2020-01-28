@@ -26,7 +26,7 @@ import pl.skleparka.service.ShipmentService;
  * Servlet implementation class CheckoutControllerFinale
  */
 @WebServlet("/checkoutFinale")
-public class CheckoutControllerFinale extends HttpServlet {
+public class CheckoutFinaleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private int orderId;
 	private String trackingNumber;
@@ -34,7 +34,7 @@ public class CheckoutControllerFinale extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CheckoutControllerFinale() {
+    public CheckoutFinaleController() {
         super();
         // TODO Auto-generated constructor stub
     }
