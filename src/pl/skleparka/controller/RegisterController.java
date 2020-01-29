@@ -31,12 +31,12 @@ public class RegisterController extends HttpServlet {
 		String lastName = request.getParameter("inputLastName");
 		UserService userService = UserService.getInstance();
 		
-		if(password.equals(passwordConf)) {
-			userService.addUser(username, email, password, firstName, middleName, lastName);
-			response.sendRedirect("index.jsp?success=1");
-		} else {
+		if(!password.equals(passwordConf)) {
 			request.setAttribute("errorMessage", "Has³a siê ró¿ni¹!");
 			request.getRequestDispatcher("/register.jsp").forward(request, response);
+		} else {
+			userService.addUser(username, email, password, firstName, middleName, lastName);
+			response.sendRedirect("index.jsp?success=1");
 		}
 	}
 

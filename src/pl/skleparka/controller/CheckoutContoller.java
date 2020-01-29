@@ -101,14 +101,7 @@ public class CheckoutContoller extends HttpServlet {
 		PaymentService.getInstance().addPayment(paymentType, user.getId(), total, 1, 1, orderId);
 				
 		ShipmentService.getInstance().addShipment(orderId, user.getId(),trackingNumber , address, carrier, charge, "Waiting for payment");
-		
-		/*if(simulatePayment()) {
-			OrderService.getInstance().updateOrderStatus(orderId, "Paid");
-			Shipment shipment = ShipmentService.getInstance().getShipmentByTrackingNumber(tracingNumber);
-			ShipmentService.getInstance().updateShipmentWithId(shipment.getShipmentId(), "", "", "", "Send");
-			sendMailToUser(user.getEmail());
-		}*/
-		
+				
 		session.setAttribute("orderId", orderId);
 		session.setAttribute("trackingNumber", trackingNumber);
 		
